@@ -1,6 +1,6 @@
 {
   "name": "@techsky/eslint-plugin-import-extension",
-  "version": "0.0.0-canary.5",
+  "version": "0.0.1",
   "license": "MIT",
   "homepage": "https://github.com/jedlinsky/techsky",
   "repository": {

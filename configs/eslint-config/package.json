@@ -1,6 +1,6 @@
 {
   "name": "@techsky/eslint-config",
-  "version": "0.0.0-canary.21",
+  "version": "0.0.1",
   "license": "MIT",
   "homepage": "https://github.com/jedlinsky/techsky",
   "repository": {

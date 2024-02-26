@@ -1,6 +1,6 @@
 {
   "name": "@techsky/eslint-plugin-react-perf",
-  "version": "3.3.2-1",
+  "version": "3.3.2-2",
   "license": "MIT",
   "homepage": "https://github.com/cvazac/eslint-plugin-react-perf",
   "repository": {
