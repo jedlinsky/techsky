@@ -10,6 +10,19 @@ type ResolveCopyProps = {
 
 type ResolveCopy = (props: ResolveCopyProps) => Copy
 
+type DefaultCopyItem = {
+  readonly from: string
+  readonly to: string
+}
+
+type DefaultCopy = readonly DefaultCopyItem[] | null
+
+type ResolveDefaultCopyProps = {
+  readonly outDir: string
+}
+
+type ResolveDefaultCopy = (props: ResolveDefaultCopyProps) => DefaultCopy
+
 type ResolvePathProps = {
   readonly path: string | readonly string[]
   readonly prepend?: string
@@ -30,7 +43,9 @@ type ResolvePathPrepend = (path: string, prepend: string | undefined) => string
 
 export type {
   Copy,
+  DefaultCopyItem,
   ResolveCopy,
+  ResolveDefaultCopy,
   ResolvePath,
   ResolvePathCurrentDirectoryNotation,
   ResolvePathInner,

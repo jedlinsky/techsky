@@ -1,12 +1,15 @@
+import { resolveDefaultCopy } from './resolveDefaultCopy.js'
 import { resolvePath } from './resolvePath.js'
 import type { ResolveCopy } from './types.js'
 
 const resolveCopy: ResolveCopy = function ({ copy, outDir }) {
+  const defaultCopy = resolveDefaultCopy({ outDir })
+
   if (copy === undefined) {
-    return null
+    return defaultCopy
   }
 
-  return copy.map((item) => {
+  const userCopy = copy.map((item) => {
     if (typeof item === 'string') {
       return {
         from: resolvePath({ path: item }),
@@ -26,6 +29,8 @@ const resolveCopy: ResolveCopy = function ({ copy, outDir }) {
       to: resolvePath({ path: item.to, prepend: outDir })
     }
   })
+
+  return [...userCopy, ...(defaultCopy ?? [])]
 }
 
 export { resolveCopy }
