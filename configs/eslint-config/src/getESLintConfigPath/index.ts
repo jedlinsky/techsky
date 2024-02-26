@@ -1,0 +1,1 @@
+export { getESLintConfigPath } from './getESLintConfigPath'

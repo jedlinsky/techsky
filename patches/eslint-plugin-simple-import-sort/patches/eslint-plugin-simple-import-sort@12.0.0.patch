@@ -1,0 +1,126 @@
+diff --git a/exports.js b/exports.js
+index 2a2360ccb4a14d7eb611555a65ce7461277109ab..af9dbebf8ba9c4434fade54cf86439ed6c0d1cb8 100644
+--- a/exports.js
++++ b/exports.js
+@@ -42,6 +42,9 @@ module.exports = {
+           )) {
+             maybeReportChunkSorting(chunk, context);
+           }
++          for (const chunk of shared.extractChunks(parent, isExport)) {
++            maybeReportChunkExportsSorting(chunk, context);
++          }
+         }
+         parents.clear();
+       },
+@@ -49,6 +52,46 @@ module.exports = {
+   },
+ };
+ 
++function isExport(node) {
++  return 'exportKind' in node ? "PartOfChunk" : "NotPartOfChunk";
++}
++
++function sortExports(items) {
++  const typeExports = items.filter(({ kind }) => kind === "type");
++  const valueExports = items.filter(({ kind }) => kind === "value");
++
++  return [
++    ...valueExports,
++    ...typeExports
++  ];
++}
++
++function sortExportKind(sortedItems) {
++  const valueExports = sortedItems.filter(({ source }) => source.kind === "value");
++
++  const moduleTypeExports = sortedItems.filter(
++    ({ source }) => source.kind === "type" && !source.originalSource.startsWith(".")
++  );
++
++  const typeExports = sortedItems.filter(({ source }) => source.kind === "type" && source.originalSource.startsWith("."));
++
++  return [
++    ...valueExports,
++    ...moduleTypeExports,
++    ...typeExports
++  ];
++}
++
++function maybeReportChunkExportsSorting(chunk, context) {
++  const sourceCode = context.getSourceCode();
++  const items = shared.getExports(chunk, sourceCode);
++  const sortedItems = sortExports(items);
++  const sorted = sortedItems.map((item) => item.code).join("\n");
++  const { start } = items[0];
++  const { end } = items[items.length - 1];
++  shared.maybeReportSorting(context, sorted, start, end);
++}
++
+ function maybeReportChunkSorting(chunk, context) {
+   const sourceCode = shared.getSourceCode(context);
+   const items = shared.getImportExportItems(
+@@ -57,7 +100,7 @@ function maybeReportChunkSorting(chunk, context) {
+     () => false, // isSideEffectImport
+     getSpecifiers
+   );
+-  const sortedItems = [[shared.sortImportExportItems(items)]];
++  const sortedItems = [[sortExportKind(shared.sortImportExportItems(items))]];
+   const sorted = shared.printSortedItems(sortedItems, items, sourceCode);
+   const { start } = items[0];
+   const { end } = items[items.length - 1];
+diff --git a/shared.js b/shared.js
+index ba0162c7269efd04246ab373b35fc1dcb94a7552..a0430e4cd35267a5565ceafc60f46e31236df8d9 100644
+--- a/shared.js
++++ b/shared.js
+@@ -95,6 +95,43 @@ function printSortedItems(sortedItems, originalItems, sourceCode) {
+   return sorted + maybeNewline;
+ }
+ 
++function getExports(chunk, sourceCode) {
++  return chunk.map((node, nodeIndex) => {
++    const lastLine =
++      nodeIndex === 0
++        ? node.loc.start.line - 1
++        : chunk[nodeIndex - 1].loc.end.line;
++
++    const commentsBefore = sourceCode
++      .getCommentsBefore(node)
++      .filter(
++        (comment) =>
++          comment.loc.start.line <= node.loc.start.line &&
++          comment.loc.end.line > lastLine &&
++          (nodeIndex > 0 || comment.loc.start.line > lastLine)
++      );
++
++    const commentsAfter = sourceCode
++      .getCommentsAfter(node)
++      .filter((comment) => comment.loc.end.line === node.loc.end.line);
++
++    const before = printCommentsBefore(node, commentsBefore, sourceCode);
++    const after = printCommentsAfter(node, commentsAfter, sourceCode);
++
++    const allTokens = getAllTokens(node, sourceCode);
++
++    const code =  before + printTokens(allTokens) + after;
++
++    const all = [...commentsBefore, node, ...commentsAfter];
++    const [start] = all[0].range;
++    const [, end] = all[all.length - 1].range;
++
++    const kind = getImportExportKind(node);
++
++    return { code, end, kind, node, start };
++  });
++}
++
+ // Wrap the import/export nodes in `passedChunk` in objects with more data about
+ // the import/export. Most importantly there’s a `code` property that contains
+ // the node as a string, with comments (if any). Finding the corresponding
+@@ -862,6 +899,7 @@ function getSourceCode(context) {
+ module.exports = {
+   extractChunks,
+   flatMap,
++  getExports,
+   getImportExportItems,
+   getSourceCode,
+   isPunctuator,

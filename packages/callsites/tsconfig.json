@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src"
+  },
+  "exclude": ["dist", "node_modules"],
+  "extends": "@techsky/tsconfig/node-cjs"
+}

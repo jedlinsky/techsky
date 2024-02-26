@@ -1,0 +1,29 @@
+{
+  "name": "@techsky/object-keys-case",
+  "version": "0.0.0-canary.6",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "packages/object-keys-case",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "build": "tsup",
+    "-lint": "eslint .",
+    "-tsc": "tsc"
+  },
+  "dependencies": {
+    "@techsky/map-object": "workspace:*",
+    "case-anything": "^2.1.13"
+  },
+  "devDependencies": {
+    "@techsky/config": "workspace:*"
+  }
+}

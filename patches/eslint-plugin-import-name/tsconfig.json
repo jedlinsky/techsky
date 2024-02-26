@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "isolatedModules": false
+  },
+  "exclude": ["dist", "node_modules"],
+  "extends": "@techsky/tsconfig/node-cjs"
+}

@@ -1,0 +1,84 @@
+diff --git a/index.js b/index.js
+index 18295c7721c01b88c64841aceac403fbec0672c8..ca9ba84c68d73e9d2458a8062a947180c6f758c2 100644
+--- a/index.js
++++ b/index.js
+@@ -8,9 +8,9 @@ module.exports = {
+   },
+   configs: {
+     recommended: {
+-      plugins: ['import-name'],
++      plugins: ['@techsky/import-name'],
+       rules: {
+-        'import-name/default-import-name': ['error', { classnames: 'classNames' }],
++        '@techsky/import-name/default-import-name': ['error', { classnames: 'classNames' }],
+       },
+     },
+   },
+diff --git a/libs/utils.js b/libs/utils.js
+index 3ce0613b0a32abad07fb3ef89657d20dac481fa6..e0da02932be640021ca478c902d3a69c8ba93d62 100644
+--- a/libs/utils.js
++++ b/libs/utils.js
+@@ -43,6 +43,36 @@ function createMessage(currentImportName, correctImportName, packageName) {
+   return `Importing "${packageName}" as "${currentImportName}" is not allowed, use "${correctImportName}" instead.`;
+ }
+ 
++function getOption(options, optionKey) {
++  const exact = options.get(optionKey)
++
++  if (exact) {
++    return exact
++  }
++
++  return [...options.entries()].reduce((accumulator, [key, value]) => {
++    if (accumulator || !key.endsWith('/*') || !value.startsWith('*')) {
++      return accumulator
++    }
++
++    const keyWithoutWildcard = key.split('').reverse().join('').replace('*', '').split('').reverse().join('')
++
++    if (!optionKey.startsWith(keyWithoutWildcard)) {
++      return accumulator
++    }
++
++    const optionKeyWithoutPrefix = optionKey.replace(keyWithoutWildcard, '')
++
++    const optionKeyWithoutPrefixAndExtension = optionKeyWithoutPrefix.includes('.')
++      ? optionKeyWithoutPrefix.split('.').at(0)
++      : optionKeyWithoutPrefix
++
++    const valueWithoutWildcard = value.replace('*', '')
++
++    return `${optionKeyWithoutPrefixAndExtension}${valueWithoutWildcard}`
++  }, '')
++}
++
+ function importDeclaration(context, node, importNames, options) {
+   const newImportNames = new Map(importNames);
+ 
+@@ -51,7 +81,7 @@ function importDeclaration(context, node, importNames, options) {
+     && node.source.value
+     && node.specifiers
+   ) {
+-    const correctImportName = options.get(node.source.value);
++    const correctImportName = getOption(options, node.source.value);
+ 
+     if (correctImportName) {
+       for (const specifier of node.specifiers) {
+@@ -100,7 +130,7 @@ function variableDeclaration(context, node, importNames, options) {
+           && currentImportName
+         ) {
+           const packageName = init.arguments[0].value;
+-          const correctImportName = options.get(packageName);
++          const correctImportName = getOption(options, packageName);
+ 
+           if (correctImportName && currentImportName !== correctImportName) {
+             const range = declaration.id.range;
+@@ -130,7 +160,7 @@ function callExpression(context, node, importNames, options) {
+     const packageName = importNames.get(node.callee.name);
+ 
+     if (packageName) {
+-      const correctImportName = options.get(packageName);
++      const correctImportName = getOption(options, packageName);
+ 
+       if (correctImportName) {
+         context.report({

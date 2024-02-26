@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "incremental": true,
+    "jsx": "preserve",
+    "module": "nodenext",
+    "plugins": [{ "name": "next" }],
+    "target": "es2019"
+  },
+  "display": "Next.js",
+  "extends": "./react.json"
+}

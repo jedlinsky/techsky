@@ -1,0 +1,52 @@
+{
+  "name": "@techsky/tsupconfig",
+  "version": "0.0.0-canary.18",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "configs/tsupconfig",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "build:config": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@techsky/tsconfig": "workspace:*",
+    "@types/normalize-path": "^3.0.2",
+    "bundle-require": "^4.0.2",
+    "cpy": "^11.0.0",
+    "date-fns": "^3.3.1",
+    "del": "^7.1.0",
+    "detective": "^5.2.1",
+    "dree": "^4.7.0",
+    "esbuild": "0.20.1",
+    "execa": "^8.0.1",
+    "get-tsconfig": "^4.7.2",
+    "import-meta-resolve": "^4.0.0",
+    "normalize-path": "^3.0.0",
+    "read-package-up": "^11.0.0",
+    "read-pkg": "^9.0.1",
+    "resolve-package-path": "^4.0.3",
+    "strip-ansi": "^7.1.0",
+    "ts-essentials": "^9.4.1",
+    "tsc-alias": "^1.8.8",
+    "tsup": "8.0.2"
+  },
+  "devDependencies": {
+    "@techsky/tsconfig": "workspace:*",
+    "@types/detective": "^5.1.5",
+    "type-fest": "4.10.3"
+  },
+  "peerDependencies": {
+    "typescript": "5.4.1-rc"
+  }
+}

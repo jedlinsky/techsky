@@ -1,0 +1,31 @@
+{
+  "name": "@techsky/config",
+  "version": "0.0.0-canary.19",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "configs/config",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "module",
+  "exports": {
+    "./eslint": "./src/eslint.ts",
+    "./tsup": "./src/tsup.ts"
+  },
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@techsky/eslint-config": "workspace:*",
+    "@techsky/tsconfig": "workspace:*",
+    "@techsky/tsupconfig": "workspace:*",
+    "tsup": "8.0.2"
+  }
+}

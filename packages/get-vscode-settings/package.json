@@ -1,0 +1,32 @@
+{
+  "name": "@techsky/get-vscode-settings",
+  "version": "0.0.0-canary.3",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "packages/get-vscode-settings",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "build:config": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@manypkg/find-root": "^2.2.1",
+    "merge-anything": "^5.1.7",
+    "strip-json-comments": "^5.0.1"
+  },
+  "devDependencies": {
+    "@techsky/tsconfig": "workspace:*",
+    "@techsky/tsupconfig": "workspace:*",
+    "@types/node": "20.11.20"
+  }
+}

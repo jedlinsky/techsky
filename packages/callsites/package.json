@@ -1,0 +1,25 @@
+{
+  "name": "@techsky/callsites",
+  "version": "0.0.0-canary.3",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "packages/callsites",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "commonjs",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "build:config": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "@techsky/tsupconfig": "workspace:*"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "checks/*": ["checks/*"],
+      "logger/*": ["logger/*"],
+      "packageJson/*": ["packageJson/*"],
+      "plugins/*": ["plugins/*"],
+      "resolveNullEntry/*": ["resolveNullEntry/*"],
+      "resolveOptions/*": ["resolveOptions/*"],
+      "resolvePath/*": ["resolvePath/*"],
+      "tscAliasPaths/*": ["tscAliasPaths/*"]
+    }
+  },
+  "exclude": ["dist", "node_modules"],
+  "extends": "@techsky/tsconfig/node"
+}

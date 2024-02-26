@@ -1,0 +1,25 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "//#lint:root": {
+      "dependsOn": ["@techsky/eslint-config#build:config"]
+    },
+    "build": {
+      "dependsOn": ["@techsky/eslint-config#build:config", "^build"],
+      "outputs": ["dist/**"]
+    },
+    "build:config": {
+      "dependsOn": ["^build:config"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {
+      "dependsOn": ["build"]
+    },
+    "release": {
+      "dependsOn": ["build", "lint", "//#lint:root", "tsc"]
+    },
+    "tsc": {
+      "dependsOn": ["build"]
+    }
+  }
+}

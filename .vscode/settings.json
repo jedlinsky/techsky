@@ -1,0 +1,40 @@
+{
+  "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[javascriptreact]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[json]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[jsonc]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[typescriptreact]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "emmet.excludeLanguages": ["javascriptreact", "typescriptreact"],
+  "emmet.includeLanguages": { "postcss": "css" },
+  "eslint.execArgv": ["--max_old_space_size=16384"],
+  "eslint.lintTask.enable": true,
+  "eslint.probe": [
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "markdown",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.runtime": "node",
+  "eslint.validate": ["json", "jsonc"],
+  "files.associations": { "*.env.*": "env" },
+  "files.eol": "\n",
+  "javascript.format.enable": false,
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "json.format.enable": false,
+  "npm.packageManager": "pnpm",
+  "typescript.format.enable": false,
+  "typescript.tsserver.maxTsServerMemory": 16384,
+  "yaml.format.enable": false
+}

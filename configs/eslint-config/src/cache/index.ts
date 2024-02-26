@@ -1,0 +1,1 @@
+export { getCachedConfig } from './getCachedConfig'

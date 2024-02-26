@@ -1,0 +1,34 @@
+{
+  "name": "@techsky/map-object",
+  "version": "0.0.0-canary.5",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "packages/map-object",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./mapObject.js": "./src/mapObject.ts",
+    "./mapObjectKeys.js": "./src/mapObjectKeys.ts",
+    "./mapObjectValues.js": "./src/mapObjectValues.ts",
+    "./types.js": "./src/types.ts"
+  },
+  "scripts": {
+    "build": "tsup",
+    "-lint": "eslint .",
+    "-tsc": "tsc"
+  },
+  "dependencies": {
+    "case-anything": "^2.1.13"
+  },
+  "devDependencies": {
+    "@techsky/config": "workspace:*"
+  }
+}

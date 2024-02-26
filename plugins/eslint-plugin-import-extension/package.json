@@ -1,0 +1,29 @@
+{
+  "name": "@techsky/eslint-plugin-import-extension",
+  "version": "0.0.0-canary.5",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "plugins/eslint-plugin-import-extension",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "build:config": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^7.0.2",
+    "typescript": "5.4.1-rc"
+  },
+  "devDependencies": {
+    "@techsky/tsupconfig": "workspace:*"
+  }
+}

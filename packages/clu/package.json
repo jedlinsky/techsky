@@ -1,0 +1,36 @@
+{
+  "name": "@techsky/clu",
+  "version": "0.0.0-canary.2",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "packages/clu",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@techsky/ansi": "workspace:*",
+    "@types/figlet": "^1.5.8",
+    "@types/lodash": "^4.14.202",
+    "figlet": "^1.7.0",
+    "lodash": "4.17.21",
+    "strip-ansi": "^7.1.0",
+    "ts-essentials": "^9.4.1",
+    "ts-toolbelt": "^9.6.0",
+    "type-fest": "4.10.3"
+  },
+  "devDependencies": {
+    "@techsky/config": "workspace:*"
+  }
+}

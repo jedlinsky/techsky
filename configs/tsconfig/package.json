@@ -1,0 +1,38 @@
+{
+  "name": "@techsky/tsconfig",
+  "version": "0.0.0-canary.9",
+  "license": "MIT",
+  "homepage": "https://github.com/jedlinsky/techsky",
+  "repository": {
+    "directory": "configs/tsconfig",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "author": "jedlinsky <info@jedlinsky.me> (https://jedlinsky.me/)",
+  "publishConfig": {
+    "directory": "dist",
+    "linkDirectory": false
+  },
+  "type": "module",
+  "exports": {
+    "./base": "./base.json",
+    "./browser": "./browser.json",
+    "./browser-bundler": "./browser-bundler.json",
+    "./browser-cjs": "./browser-cjs.json",
+    "./nextjs": "./nextjs.json",
+    "./node": "./node.json",
+    "./node-bundler": "./node-bundler.json",
+    "./node-cjs": "./node-cjs.json",
+    "./react": "./react.json",
+    "./react-bundler": "./react-bundler.json",
+    "./react-cjs": "./react-cjs.json"
+  },
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "@styled/typescript-styled-plugin": "^1.0.1",
+    "typescript": "5.4.1-rc"
+  }
+}

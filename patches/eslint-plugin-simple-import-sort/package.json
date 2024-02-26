@@ -1,0 +1,28 @@
+{
+  "name": "@techsky/eslint-plugin-simple-import-sort",
+  "version": "12.0.0-1",
+  "license": "MIT",
+  "homepage": "https://github.com/lydell/eslint-plugin-simple-import-sort",
+  "repository": {
+    "directory": "patches/eslint-plugin-simple-import-sort",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "commonjs",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build:config": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "@techsky/tsupconfig": "workspace:*",
+    "eslint-plugin-simple-import-sort": "12.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "8.57.0"
+  }
+}

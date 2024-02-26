@@ -1,0 +1,1 @@
+export { resolveFileContent } from './resolveFileContent'

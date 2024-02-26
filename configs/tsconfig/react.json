@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "lint": {
+          "duplicateProperties": "error",
+          "emptyRules": "error",
+          "float": "error",
+          "important": "error",
+          "propertyIgnoredDueToDisplay": "error",
+          "unknownProperties": "error",
+          "zeroUnits": "error"
+        },
+        "name": "@styled/typescript-styled-plugin"
+      }
+    ],
+    "target": "es2019"
+  },
+  "display": "React",
+  "extends": "./browser.json"
+}

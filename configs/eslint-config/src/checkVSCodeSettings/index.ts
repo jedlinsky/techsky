@@ -1,0 +1,1 @@
+export { checkVSCodeSettings } from './checkVSCodeSettings'

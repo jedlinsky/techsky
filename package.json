@@ -1,0 +1,60 @@
+{
+  "name": "techsky",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=8"
+  },
+  "packageManager": "pnpm@8.15.4",
+  "type": "module",
+  "scripts": {
+    "build": "dotenv -- turbo run build",
+    "build:config": "dotenv -- turbo run build --filter=@techsky/config",
+    "build:get-vscode-settings": "dotenv -- turbo run build --filter=@techsky/get-vscode-settings",
+    "refresh": "pnpm clean && pnpm install",
+    "refresh:build": "pnpm refresh && pnpm build:config && pnpm build",
+    "clean": "pnpm dlx rimraf@5.0.5 --glob './.turbo' './{configs,packages,patches,plugins}/*/{.turbo,dist}' './pnpm-lock.yaml' './**/node_modules'",
+    "checks:mismatches": "pnpm dlx syncpack@12.3.0 list-mismatches --types !local,dev,peer,prod",
+    "checks:updates": "pnpm dlx npm-check-updates@16.14.15 --dep dev,optional,packageManager,peer,prod --pre 1 --root --workspaces",
+    "checks": "pnpm checks:updates && pnpm checks:mismatches",
+    "lint:root": "dotenv -- eslint .",
+    "lint": "dotenv -- turbo run lint lint:root tsc",
+    "tsc": "turbo run tsc",
+    "release:npm:canary": "dotenv -- turbo run release && pnpm publish --recursive --access public --tag canary --dry-run",
+    "release:npm:latest": "dotenv -- turbo run release && pnpm publish --recursive --access public --dry-run",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@techsky/eslint-config": "workspace:*",
+    "@techsky/eslint-plugin-import-extension": "workspace:*",
+    "@techsky/eslint-plugin-import-name": "workspace:*",
+    "@techsky/eslint-plugin-react-perf": "workspace:*",
+    "@techsky/eslint-plugin-simple-import-sort": "workspace:*",
+    "@techsky/tsconfig": "workspace:*",
+    "@techsky/tsupconfig": "workspace:*",
+    "@types/node": "20.11.20",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "8.57.0",
+    "prettier": "3.2.5",
+    "tsup": "8.0.2",
+    "turbo": "1.12.4",
+    "typescript": "5.4.1-rc"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild": "0.20.1"
+    },
+    "patchedDependencies": {
+      "eslint-plugin-import-name@1.2.3": "patches/eslint-plugin-import-name/patches/eslint-plugin-import-name@1.2.3.patch",
+      "eslint-plugin-react-perf@3.3.2": "patches/eslint-plugin-react-perf/patches/eslint-plugin-react-perf@3.3.2.patch",
+      "eslint-plugin-simple-import-sort@12.0.0": "patches/eslint-plugin-simple-import-sort/patches/eslint-plugin-simple-import-sort@12.0.0.patch"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint-plugin-todos>eslint": "8",
+        "eslint-plugin-typescript-sort-keys>@typescript-eslint/parser": "7"
+      }
+    }
+  }
+}

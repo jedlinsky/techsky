@@ -1,0 +1,1 @@
+export { resolvePaths } from './resolvePaths'

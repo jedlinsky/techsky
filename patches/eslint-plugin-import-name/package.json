@@ -1,0 +1,28 @@
+{
+  "name": "@techsky/eslint-plugin-import-name",
+  "version": "1.2.3-3",
+  "license": "MIT",
+  "homepage": "https://github.com/R1ON/eslint-plugin-import-name",
+  "repository": {
+    "directory": "patches/eslint-plugin-import-name",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "commonjs",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build:config": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "@techsky/tsupconfig": "workspace:*",
+    "eslint-plugin-import-name": "1.2.3"
+  },
+  "peerDependencies": {
+    "eslint": "8.57.0"
+  }
+}

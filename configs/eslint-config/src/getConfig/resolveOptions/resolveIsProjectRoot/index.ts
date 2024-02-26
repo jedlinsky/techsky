@@ -1,0 +1,1 @@
+export { resolveIsProjectRoot } from './resolveIsProjectRoot'

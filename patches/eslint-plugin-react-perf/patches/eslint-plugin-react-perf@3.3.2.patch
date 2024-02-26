@@ -1,0 +1,99 @@
+diff --git a/index.js b/index.js
+index 9a3ee59951388ba29d774a42bb29c281441b9981..d175a3cc5678efd3819adfc23c3ecedc01fc21bd 100644
+--- a/index.js
++++ b/index.js
+@@ -13,7 +13,7 @@ function configureAsError(rules) {
+     if (!rules.hasOwnProperty(key)) {
+       continue;
+     }
+-    result["react-perf/" + key] = 2;
++    result["@techsky/react-perf/" + key] = 2;
+   }
+   return result;
+ }
+@@ -22,20 +22,20 @@ module.exports = {
+   rules: allRules,
+   configs: {
+     recommended: {
+-      plugins: ["react-perf"],
++      plugins: ["@techsky/react-perf"],
+       parserOptions: {
+         ecmaFeatures: {
+           jsx: true
+         }
+       },
+       rules: {
+-        "react-perf/jsx-no-new-object-as-prop": 2,
+-        "react-perf/jsx-no-new-array-as-prop": 2,
+-        "react-perf/jsx-no-new-function-as-prop": 2
++        "@techsky/react-perf/jsx-no-new-object-as-prop": 2,
++        "@techsky/react-perf/jsx-no-new-array-as-prop": 2,
++        "@techsky/react-perf/jsx-no-new-function-as-prop": 2
+       }
+     },
+     all: {
+-      plugins: ["react-perf"],
++      plugins: ["@techsky/react-perf"],
+       parserOptions: {
+         ecmaFeatures: {
+           jsx: true
+diff --git a/lib/utils/common.js b/lib/utils/common.js
+index 6eda095f0fbeae5aa819602bd06fd5c8fa60bb61..1e5afd9f4f6e1281eb97afbbf49fe01ce57d5bef 100644
+--- a/lib/utils/common.js
++++ b/lib/utils/common.js
+@@ -12,6 +12,12 @@ function createRule(description, errorMessage, isViolation) {
+         {
+           additionalProperties: false,
+           properties: {
++            allowList: {
++              type: "array",
++              items: {
++                type: "string",
++              },
++            },
+             nativeAllowList: {
+               oneOf: [
+                 {
+@@ -33,7 +39,7 @@ function createRule(description, errorMessage, isViolation) {
+ 
+     create: function (context) {
+       const { options } = context;
+-      const { nativeAllowList } = options[0] || {};
++      const { allowList, nativeAllowList } = options[0] || {};
+       return {
+         JSXAttribute: function (node) {
+           if (!node.value || node.value.type !== "JSXExpressionContainer") {
+@@ -51,6 +57,17 @@ function createRule(description, errorMessage, isViolation) {
+           ) {
+             return;
+           }
++          if (
++            isComponent(node) &&
++            (Array.isArray(allowList) &&
++              allowList.find(function (exclude) {
++                return (
++                  node.name.name.toLowerCase() === exclude.toLowerCase()
++                );
++              }))
++          ) {
++            return;
++          }
+ 
+           var violationFound = false;
+           findRelevantNodes(context, node.value.expression).forEach(function (
+@@ -131,6 +148,15 @@ function isNativeElement(node) {
+   return firstChar === firstChar.toLowerCase();
+ }
+ 
++function isComponent(node) {
++  if (node.parent.name.type === "JSXIdentifier") {
++    return true;
++  }
++  const nodeName = node.parent.name.name ?? node.parent.name.object.name;
++  const firstChar = nodeName.charAt(0);
++  return firstChar === firstChar.toUpperCase();
++}
++
+ module.exports = {
+   createRule,
+   checkConstructor,

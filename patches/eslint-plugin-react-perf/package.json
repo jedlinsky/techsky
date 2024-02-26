@@ -1,0 +1,28 @@
+{
+  "name": "@techsky/eslint-plugin-react-perf",
+  "version": "3.3.2-1",
+  "license": "MIT",
+  "homepage": "https://github.com/cvazac/eslint-plugin-react-perf",
+  "repository": {
+    "directory": "patches/eslint-plugin-react-perf",
+    "type": "git",
+    "url": "https://github.com/jedlinsky/techsky.git"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "type": "commonjs",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build:config": "tsup",
+    "lint": "eslint .",
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "@techsky/tsupconfig": "workspace:*",
+    "eslint-plugin-react-perf": "3.3.2"
+  },
+  "peerDependencies": {
+    "eslint": "8.57.0"
+  }
+}
