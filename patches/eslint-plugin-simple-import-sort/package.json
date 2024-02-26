@@ -1,8 +1,8 @@
 {
   "name": "@techsky/eslint-plugin-simple-import-sort",
-  "version": "12.0.0-2",
+  "version": "12.0.0-3",
   "license": "MIT",
-  "homepage": "https://github.com/lydell/eslint-plugin-simple-import-sort",
+  "homepage": "https://github.com/jedlinsky/techsky/tree/master/patches/eslint-plugin-simple-import-sort#readme",
   "repository": {
     "directory": "patches/eslint-plugin-simple-import-sort",
     "type": "git",

@@ -1,8 +1,8 @@
 {
   "name": "@techsky/eslint-plugin-import-name",
-  "version": "1.2.3-4",
+  "version": "1.2.3-5",
   "license": "MIT",
-  "homepage": "https://github.com/R1ON/eslint-plugin-import-name",
+  "homepage": "https://github.com/jedlinsky/techsky/tree/master/patches/eslint-plugin-import-name#readme",
   "repository": {
     "directory": "patches/eslint-plugin-import-name",
     "type": "git",

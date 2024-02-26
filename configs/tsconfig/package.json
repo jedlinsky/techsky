@@ -1,8 +1,8 @@
 {
   "name": "@techsky/tsconfig",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/jedlinsky/techsky",
+  "homepage": "https://github.com/jedlinsky/techsky/tree/master/configs/tsconfig#readme",
   "repository": {
     "directory": "configs/tsconfig",
     "type": "git",

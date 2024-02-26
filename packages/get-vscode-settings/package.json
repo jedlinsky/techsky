@@ -1,8 +1,8 @@
 {
   "name": "@techsky/get-vscode-settings",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/jedlinsky/techsky",
+  "homepage": "https://github.com/jedlinsky/techsky/tree/master/packages/get-vscode-settings#readme",
   "repository": {
     "directory": "packages/get-vscode-settings",
     "type": "git",

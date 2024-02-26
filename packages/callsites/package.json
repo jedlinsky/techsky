@@ -1,8 +1,8 @@
 {
   "name": "@techsky/callsites",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/jedlinsky/techsky",
+  "homepage": "https://github.com/jedlinsky/techsky/tree/master/packages/callsites#readme",
   "repository": {
     "directory": "packages/callsites",
     "type": "git",

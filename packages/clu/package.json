@@ -1,8 +1,8 @@
 {
   "name": "@techsky/clu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/jedlinsky/techsky",
+  "homepage": "https://github.com/jedlinsky/techsky/tree/master/packages/clu#readme",
   "repository": {
     "directory": "packages/clu",
     "type": "git",

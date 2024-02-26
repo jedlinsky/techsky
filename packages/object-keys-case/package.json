@@ -1,8 +1,8 @@
 {
   "name": "@techsky/object-keys-case",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/jedlinsky/techsky",
+  "homepage": "https://github.com/jedlinsky/techsky/tree/master/packages/object-keys-case#readme",
   "repository": {
     "directory": "packages/object-keys-case",
     "type": "git",
