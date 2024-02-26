@@ -21,8 +21,8 @@
     "lint:root": "dotenv -- eslint .",
     "lint": "dotenv -- turbo run lint lint:root tsc",
     "tsc": "turbo run tsc",
-    "release:npm:canary": "dotenv -- turbo run release && pnpm publish --recursive --access public --tag canary --dry-run",
-    "release:npm:latest": "dotenv -- turbo run release && pnpm publish --recursive --access public --dry-run",
+    "release:npm": "dotenv -- turbo run release && pnpm publish --recursive --access public",
+    "release:npm:canary": "dotenv -- turbo run release && pnpm publish --recursive --access public --tag canary",
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
