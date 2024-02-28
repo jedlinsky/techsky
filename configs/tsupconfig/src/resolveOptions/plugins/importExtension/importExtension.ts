@@ -1,4 +1,4 @@
-import { importRegexSimple } from './regex.js'
+import { importRegex } from './importRegex.js'
 import type { ImportExtension } from './types.js'
 
 const importExtension: ImportExtension = function () {
@@ -9,12 +9,12 @@ const importExtension: ImportExtension = function () {
         return { code }
       }
 
-      if (!importRegexSimple.test(code)) {
+      if (!importRegex.test(code)) {
         return { code }
       }
 
       return {
-        code: code.replace(importRegexSimple, (match, p1) => match.replace(`.${p1}`, '.js'))
+        code: code.replace(importRegex, (match, p1) => match.replace(`.${p1}`, '.js'))
       }
     }
   }
