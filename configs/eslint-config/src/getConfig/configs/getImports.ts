@@ -3,6 +3,8 @@ import type { DefinedOptions } from 'getConfig'
 import type { GetImports } from './types'
 
 const getImports: GetImports = function (options) {
+  const hasNextJS = options.has.package.next && (options.files.nextJSApp !== null || options.files.nextJSPages !== null)
+
   return {
     overrides: [
       {
@@ -11,7 +13,7 @@ const getImports: GetImports = function (options) {
           // TODO: when updated, replace patch with original
           '@techsky/simple-import-sort',
           'import',
-          ...(options.has.package.mui ? ['mui-path-imports'] : []),
+          ...(!hasNextJS && options.has.package.mui ? ['mui-path-imports'] : []),
           'no-relative-import-paths'
         ],
         rules: {
@@ -45,7 +47,7 @@ const getImports: GetImports = function (options) {
             }
           ],
           'import/no-useless-path-segments': 'error',
-          ...(options.has.package.mui
+          ...(!hasNextJS && options.has.package.mui
             ? {
                 'mui-path-imports/mui-path-imports': 'error'
               }
