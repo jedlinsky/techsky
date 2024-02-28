@@ -33,7 +33,7 @@
     "@techsky/eslint-plugin-simple-import-sort": "workspace:*",
     "@techsky/tsconfig": "workspace:*",
     "@techsky/tsupconfig": "workspace:*",
-    "@types/node": "20.11.20",
+    "@types/node": "20.11.22",
     "dotenv-cli": "^7.3.0",
     "eslint": "8.57.0",
     "prettier": "3.2.5",

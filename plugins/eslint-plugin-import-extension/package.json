@@ -20,7 +20,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "^7.0.2",
+    "@typescript-eslint/utils": "^7.1.0",
     "typescript": "5.4.1-rc"
   },
   "devDependencies": {
