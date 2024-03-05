@@ -23,7 +23,7 @@
     "@emotion/eslint-plugin": "^11.11.0",
     "@getify/eslint-plugin-proper-arrows": "^11.0.3",
     "@iarna/toml": "^2.2.5",
-    "@next/eslint-plugin-next": "^14.1.1",
+    "@next/eslint-plugin-next": "^14.1.2",
     "@stylistic/eslint-plugin-js": "^1.6.3",
     "@techsky/callsites": "workspace:*",
     "@techsky/eslint-plugin-import-extension": "workspace:*",
@@ -90,7 +90,7 @@
     "sort-keys-recursive": "^2.1.10",
     "ts-essentials": "^9.4.1",
     "ts-toolbelt": "^9.6.0",
-    "type-fest": "4.11.0",
+    "type-fest": "4.11.1",
     "yaml": "^2.4.0"
   },
   "devDependencies": {
