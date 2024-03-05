@@ -65,4 +65,4 @@ type ResolvePathsProps = Simplify<
 
 type ResolvePaths = (props: ResolvePathsProps) => PathsWithParsedTSConfig
 
-export type { Paths, ResolvePaths }
+export type { Paths, PathsWithParsedTSConfig, ResolvePaths }

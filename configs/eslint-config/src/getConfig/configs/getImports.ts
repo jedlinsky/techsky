@@ -3,7 +3,7 @@ import type { DefinedOptions } from 'getConfig'
 import type { GetImports } from './types'
 
 const getImports: GetImports = function (options) {
-  const hasNextJS = options.has.package.next && (options.files.nextJSApp !== null || options.files.nextJSPages !== null)
+  const hasNextJS = options.has.nextJS && (options.files.nextJSApp !== null || options.files.nextJSPages !== null)
 
   return {
     overrides: [
@@ -106,8 +106,8 @@ const getImports: GetImports = function (options) {
             },
             {
               excludedFiles: [
-                ...(options.has.package.next && options.files.nextJSApp ? options.files.nextJSApp : []),
-                ...(options.has.package.next && options.files.nextJSPages ? options.files.nextJSPages : []),
+                ...(options.has.nextJS && options.files.nextJSApp ? options.files.nextJSApp : []),
+                ...(options.has.nextJS && options.files.nextJSPages ? options.files.nextJSPages : []),
                 ...options.files.root
               ],
               files: options.files.common,

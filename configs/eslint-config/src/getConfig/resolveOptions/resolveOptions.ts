@@ -47,7 +47,7 @@ const resolveOptions: ResolveOptions = function ({ cwd = process.cwd(), eslintCo
 
   const format = resolveFormat({ packageJson, parsedTSConfig })
 
-  const has = resolveHas({ dependencies, paths, userOptions })
+  const has = resolveHas({ dependencies, packageJson, parsedTSConfig, paths, userOptions })
 
   const extensions = resolveExtensions(has)
 

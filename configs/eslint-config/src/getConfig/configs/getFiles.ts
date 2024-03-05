@@ -1,8 +1,8 @@
 import type { GetFiles } from './types'
 
 const getFiles: GetFiles = function (options) {
-  const hasNextJSApp = options.has.package.next && options.files.nextJSApp !== null
-  const hasNextJSPages = options.has.package.next && options.files.nextJSPages !== null
+  const hasNextJSApp = options.has.nextJS && options.files.nextJSApp !== null
+  const hasNextJSPages = options.has.nextJS && options.files.nextJSPages !== null
 
   return {
     overrides: [

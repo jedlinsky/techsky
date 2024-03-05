@@ -1,7 +1,11 @@
 import type { Dependencies, Paths, UserOptions } from 'getConfig'
+import type { PackageJson } from 'getConfig/resolveOptions/resolvePackageJson'
+import type { ParsedTSConfig } from 'getConfig/resolveOptions/resolvePaths'
+import type { HasNextJS } from './resolveHasNextJS'
 import type { HasPackage } from './resolveHasPackage'
 
 type Has = {
+  readonly nextJS: HasNextJS
   readonly option: HasOption
   readonly package: HasPackage
   readonly rule: HasRule
@@ -10,6 +14,8 @@ type Has = {
 
 type ResolveHasProps = {
   readonly dependencies: Dependencies
+  readonly packageJson: PackageJson
+  readonly parsedTSConfig: ParsedTSConfig
   readonly paths: Paths
   readonly userOptions: UserOptions
 }

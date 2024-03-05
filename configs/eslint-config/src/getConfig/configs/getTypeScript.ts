@@ -118,7 +118,7 @@ const getTypeScript: GetTypeScript = function (options) {
                             '@techsky/import-extension/import-extension': [
                               'error',
                               {
-                                mapTSToJS: options.has.package.next ? false : true,
+                                mapTSToJS: options.has.nextJS ? false : true,
                                 required: 'always'
                               }
                             ]

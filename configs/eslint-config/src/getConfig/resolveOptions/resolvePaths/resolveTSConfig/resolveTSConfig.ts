@@ -2,13 +2,13 @@ import { parseTsconfig as parseTSConfig } from 'get-tsconfig'
 import { resolveBaseGeneric } from 'getConfig/resolveOptions/resolvePaths/resolveBase'
 import { resolveTSConfigPath } from './resolveTSConfigPath'
 import { resolveTSConfigPaths } from './resolveTSConfigPaths'
-import type { ResolveTSConfig } from './types'
+import type { ParsedTSConfigNonNullable, ResolveTSConfig } from './types'
 
 const resolveTSConfig: ResolveTSConfig = function ({ cwd, root, tsConfigPath }) {
   try {
     const tsConfig = resolveTSConfigPath({ cwd, root, tsConfigPath })
 
-    const parsedTSConfig = parseTSConfig(tsConfig.absolute)
+    const parsedTSConfig = parseTSConfig(tsConfig.absolute) as ParsedTSConfigNonNullable
 
     const { compilerOptions } = parsedTSConfig
 

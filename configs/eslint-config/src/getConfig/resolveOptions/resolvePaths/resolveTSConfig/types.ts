@@ -6,7 +6,9 @@ import type { Root } from 'getConfig/resolveOptions/resolvePaths/resolveRoot'
 
 type TSConfig = Path<'withRoot'> | null
 
-type ParsedTSConfigNonNullable = DeepReadonly<TSConfigJsonResolved>
+type ParsedTSConfigNonNullable = DeepReadonly<TSConfigJsonResolved> & {
+  readonly display?: string
+}
 
 type ParsedTSConfig = ParsedTSConfigNonNullable | null
 
@@ -47,6 +49,7 @@ type ResolveTSConfigPaths = (props: ResolveTSConfigPathsProps) => TSConfigPaths
 
 export type {
   ParsedTSConfig,
+  ParsedTSConfigNonNullable,
   ResolvedTSConfig,
   ResolveTSConfig,
   ResolveTSConfigPath,
