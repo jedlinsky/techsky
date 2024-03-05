@@ -1,6 +1,7 @@
 import type { O } from 'ts-toolbelt'
 import type { Extensions, Has, Paths, ResolvedUserOptions } from 'getConfig'
 import type { GitIgnorePatterns } from 'getConfig/resolveOptions/resolveGitIgnorePatterns'
+import type { IgnorePatterns } from 'getConfig/resolveOptions/resolveIgnorePatterns'
 
 type ResolverProps = {
   readonly extensions?: readonly string[] | null
@@ -77,6 +78,7 @@ type ResolveFilesProps = {
   readonly extensions: Extensions
   readonly gitIgnorePatterns: GitIgnorePatterns
   readonly has: Has
+  readonly ignorePatterns: IgnorePatterns
   readonly isMonorepoRoot: boolean
   readonly paths: Paths
   readonly rules: ResolvedUserOptions['rules']
@@ -104,6 +106,7 @@ type ResolvedIgnorePatternsPaths = readonly string[]
 type ResolveIgnorePatternsPathsProps = {
   readonly extensions: Extensions
   readonly gitIgnorePatterns: GitIgnorePatterns
+  readonly ignorePatterns: IgnorePatterns
   readonly isMonorepoRoot: boolean
   readonly paths: Paths
 }

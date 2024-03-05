@@ -6,6 +6,7 @@ import type { Files } from './resolveFiles'
 import type { Format } from './resolveFormat'
 import type { GitIgnorePatterns } from './resolveGitIgnorePatterns'
 import type { Has } from './resolveHas'
+import type { IgnorePatterns } from './resolveIgnorePatterns'
 import type { PackageJson } from './resolvePackageJson'
 import type { ParsedTSConfig, Paths } from './resolvePaths'
 import type { Scope } from './resolveScope'
@@ -18,6 +19,7 @@ type AddedResolvedOptions = {
   readonly format: Format
   readonly gitIgnorePatterns: GitIgnorePatterns
   readonly has: Has
+  readonly ignorePatterns: IgnorePatterns
   readonly isMonorepo: boolean
   readonly isMonorepoRoot: boolean
   readonly isProjectRoot: boolean

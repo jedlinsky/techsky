@@ -5,6 +5,7 @@ const resolveHasOption: ResolveHasOption = function (userOptions) {
     baseUrl: 'baseUrl' in userOptions,
     envPath: 'envPath' in userOptions,
     extend: 'extend' in userOptions,
+    ignore: 'ignore' in userOptions,
     ignoreGitIgnored: 'ignoreGitIgnored' in userOptions,
     mergePrettier: 'mergePrettier' in userOptions,
     nextJSAppDir: 'nextJSAppDir' in userOptions,

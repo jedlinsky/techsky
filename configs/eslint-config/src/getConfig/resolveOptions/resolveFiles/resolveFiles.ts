@@ -2,7 +2,15 @@ import { getFilesPathsResolver } from './getFilesPathsResolver'
 import { resolveIgnorePatternsPaths } from './resolveIgnorePatternsPaths'
 import type { ResolveFiles } from './types'
 
-const resolveFiles: ResolveFiles = function ({ extensions, gitIgnorePatterns, has, isMonorepoRoot, paths, rules }) {
+const resolveFiles: ResolveFiles = function ({
+  extensions,
+  gitIgnorePatterns,
+  has,
+  ignorePatterns,
+  isMonorepoRoot,
+  paths,
+  rules
+}) {
   const filesPathsResolver = getFilesPathsResolver({ extensions, has, paths })
 
   return {
@@ -56,7 +64,7 @@ const resolveFiles: ResolveFiles = function ({ extensions, gitIgnorePatterns, ha
     }),
     ignorePatterns: filesPathsResolver({
       extensions: null,
-      paths: resolveIgnorePatternsPaths({ extensions, gitIgnorePatterns, isMonorepoRoot, paths }),
+      paths: resolveIgnorePatternsPaths({ extensions, gitIgnorePatterns, ignorePatterns, isMonorepoRoot, paths }),
       segments: null
     }),
     javascript: filesPathsResolver({

@@ -4,6 +4,7 @@ import { resolveFiles } from './resolveFiles'
 import { resolveFormat } from './resolveFormat'
 import { resolveGitIgnorePatterns } from './resolveGitIgnorePatterns'
 import { resolveHas } from './resolveHas'
+import { resolveIgnorePatterns } from './resolveIgnorePatterns'
 import { resolveIsMonorepo } from './resolveIsMonorepo'
 import { resolveIsProjectRoot } from './resolveIsProjectRoot'
 import { resolveIsTurborepo } from './resolveIsTurborepo'
@@ -51,6 +52,8 @@ const resolveOptions: ResolveOptions = function ({ cwd = process.cwd(), eslintCo
 
   const extensions = resolveExtensions(has)
 
+  const ignorePatterns = resolveIgnorePatterns({ ignore: resolvedUserOptions.ignore })
+
   const gitIgnorePatterns = resolveGitIgnorePatterns({
     ignoreGitIgnored: resolvedUserOptions.ignoreGitIgnored,
     paths
@@ -62,6 +65,7 @@ const resolveOptions: ResolveOptions = function ({ cwd = process.cwd(), eslintCo
     extensions,
     gitIgnorePatterns,
     has,
+    ignorePatterns,
     isMonorepoRoot,
     paths,
     rules: resolvedUserOptions.rules
@@ -87,6 +91,7 @@ const resolveOptions: ResolveOptions = function ({ cwd = process.cwd(), eslintCo
     format,
     gitIgnorePatterns,
     has,
+    ignorePatterns,
     isMonorepo,
     isMonorepoRoot,
     isProjectRoot,

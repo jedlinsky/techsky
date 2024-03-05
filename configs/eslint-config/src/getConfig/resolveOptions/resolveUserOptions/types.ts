@@ -68,6 +68,7 @@ type ResolvedUserOptions = {
   readonly baseUrl?: string
   readonly envPath?: string
   readonly extend?: LinterConfig
+  readonly ignore?: readonly string[]
   readonly ignoreGitIgnored: boolean
   readonly mergePrettier: boolean
   readonly nextJSAppDir: string | null
