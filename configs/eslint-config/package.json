@@ -1,6 +1,6 @@
 {
   "name": "@techsky/eslint-config",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "homepage": "https://github.com/jedlinsky/techsky/tree/master/configs/eslint-config#readme",
   "repository": {

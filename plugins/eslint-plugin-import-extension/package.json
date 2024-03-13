@@ -1,6 +1,6 @@
 {
   "name": "@techsky/eslint-plugin-import-extension",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "homepage": "https://github.com/jedlinsky/techsky/tree/master/plugins/eslint-plugin-import-extension#readme",
   "repository": {
