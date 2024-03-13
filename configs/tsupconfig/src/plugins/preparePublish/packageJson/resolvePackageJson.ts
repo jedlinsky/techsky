@@ -81,7 +81,7 @@ const resolvePackageJson: ResolvePackageJson = function ({
     ...(contributors ? { contributors } : {}),
     ...(maintainers ? { maintainers } : {}),
     ...(funding ? { funding } : {}),
-    private: false,
+    private: packageJson.private ?? false,
     ...(publishConfig ? { publishConfig } : {}),
     ...(engines ? { engines } : {}),
     ...(packageManager ? { packageManager } : {}),
