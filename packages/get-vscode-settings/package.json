@@ -27,6 +27,6 @@
   "devDependencies": {
     "@techsky/tsconfig": "workspace:*",
     "@techsky/tsupconfig": "workspace:*",
-    "@types/node": "20.11.24"
+    "@types/node": "20.11.27"
   }
 }

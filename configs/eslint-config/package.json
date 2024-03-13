@@ -23,7 +23,7 @@
     "@emotion/eslint-plugin": "^11.11.0",
     "@getify/eslint-plugin-proper-arrows": "^11.0.3",
     "@iarna/toml": "^2.2.5",
-    "@next/eslint-plugin-next": "^14.1.2",
+    "@next/eslint-plugin-next": "^14.1.3",
     "@stylistic/eslint-plugin-js": "^1.6.3",
     "@techsky/callsites": "workspace:*",
     "@techsky/eslint-plugin-import-extension": "workspace:*",
@@ -36,8 +36,8 @@
     "@types/micromatch": "^4.0.6",
     "@types/parse-gitignore": "^1.0.2",
     "@types/prettier": "^2.7.3",
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
     "chokidar": "^3.6.0",
     "cosmiconfig": "^9.0.0",
     "editorconfig": "^2.0.0",
@@ -49,10 +49,10 @@
     "eslint-plugin-destructure-depth": "^1.0.3",
     "eslint-plugin-filenames-simple": "^0.9.0",
     "eslint-plugin-fpcs": "^1.6.1",
-    "eslint-plugin-functional": "^6.0.1",
+    "eslint-plugin-functional": "^6.1.1",
     "eslint-plugin-i18next": "^6.0.3",
     "eslint-plugin-import": "npm:eslint-plugin-i@^2.29.1",
-    "eslint-plugin-jsdoc": "^48.2.0",
+    "eslint-plugin-jsdoc": "^48.2.1",
     "eslint-plugin-jsonc": "^2.13.0",
     "eslint-plugin-lodash-fp": "^2.2.0-a1",
     "eslint-plugin-mui-path-imports": "^0.0.15",
@@ -72,15 +72,15 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-sort-react-dependency-arrays": "^0.3.0",
     "eslint-plugin-todos": "^0.1.0",
-    "eslint-plugin-toplevel": "^1.0.1",
+    "eslint-plugin-toplevel": "^1.1.0",
     "eslint-plugin-ts-react-hooks": "^0.1.1",
-    "eslint-plugin-turbo": "^1.12.4",
+    "eslint-plugin-turbo": "^1.12.5",
     "eslint-plugin-typescript-sort-keys": "^3.2.0",
     "eslint-plugin-unicorn": "^51.0.1",
     "eslint-plugin-workspaces": "^0.10.0",
     "eslint-plugin-you-dont-need-lodash-underscore": "^6.13.0",
     "fast-glob": "^3.3.2",
-    "get-tsconfig": "^4.7.2",
+    "get-tsconfig": "^4.7.3",
     "json5": "^2.2.3",
     "jsonc-eslint-parser": "^2.4.0",
     "mem": "^9.0.2",
@@ -90,14 +90,14 @@
     "sort-keys-recursive": "^2.1.10",
     "ts-essentials": "^9.4.1",
     "ts-toolbelt": "^9.6.0",
-    "type-fest": "4.11.1",
-    "yaml": "^2.4.0"
+    "type-fest": "4.12.0",
+    "yaml": "^2.4.1"
   },
   "devDependencies": {
     "@techsky/get-vscode-settings": "workspace:*",
     "@techsky/tsupconfig": "workspace:*"
   },
   "peerDependencies": {
-    "typescript": "5.4.1-rc"
+    "typescript": "5.4.2"
   }
 }
