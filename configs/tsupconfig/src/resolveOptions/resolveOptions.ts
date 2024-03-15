@@ -41,7 +41,7 @@ const resolveOptions: ResolveOptions = async function (options = {}, defineConfi
   const packageJson = resolvePackageJson()
   const tsConfig = resolveTSConfig()
 
-  const { dts = { resolve: true }, dtsTimeout = 60000, external, includeDistPackageJson = true } = options
+  const { dts = { resolve: true }, dtsTimeout = 120000, external, includeDistPackageJson = true } = options
 
   const userEntry = options.entry
 
