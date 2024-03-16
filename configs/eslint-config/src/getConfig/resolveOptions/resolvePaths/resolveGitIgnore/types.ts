@@ -12,4 +12,8 @@ type ResolveGitIgnoreWorkspaceProps = {
 
 type ResolveGitIgnoreWorkspace = (props: ResolveGitIgnoreWorkspaceProps) => GitIgnoreWorkspace
 
-export type { GitIgnore, GitIgnoreWorkspace, ResolveGitIgnore, ResolveGitIgnoreWorkspace }
+type ProjectAbsolutePath = string
+
+type ResolveProjectAbsolutePath = () => ProjectAbsolutePath
+
+export type { GitIgnore, GitIgnoreWorkspace, ResolveGitIgnore, ResolveGitIgnoreWorkspace, ResolveProjectAbsolutePath }
