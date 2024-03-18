@@ -24,7 +24,7 @@
     "@types/normalize-path": "^3.0.2",
     "bundle-require": "^4.0.2",
     "cpy": "^11.0.1",
-    "date-fns": "^3.5.0",
+    "date-fns": "^3.6.0",
     "del": "^7.1.0",
     "detective": "^5.2.1",
     "dree": "^4.7.0",
