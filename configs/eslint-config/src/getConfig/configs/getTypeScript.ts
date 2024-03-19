@@ -14,7 +14,7 @@ const getTypeScript: GetTypeScript = function (options) {
       ...(options.has.typescript
         ? ([
             {
-              files: [...options.files.typescript, ...(options.has.nextJS ? ['next.config.*'] : [])],
+              files: options.files.typescript,
               parser: '@typescript-eslint/parser',
               parserOptions: {
                 ...(options.type === 'full' && options.paths.tsConfig
