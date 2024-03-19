@@ -44,7 +44,7 @@
   "devDependencies": {
     "@techsky/tsconfig": "workspace:*",
     "@types/detective": "^5.1.5",
-    "type-fest": "4.12.0"
+    "type-fest": "4.13.0"
   },
   "peerDependencies": {
     "typescript": "5.4.2"
