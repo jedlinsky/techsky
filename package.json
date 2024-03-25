@@ -16,7 +16,7 @@
     "refresh:build": "pnpm refresh && pnpm build:config && pnpm build",
     "clean": "pnpm dlx rimraf@5.0.5 --glob './.turbo' './{configs,packages,patches,plugins}/*/{.turbo,dist}' './pnpm-lock.yaml' './**/node_modules'",
     "checks:mismatches": "pnpm dlx syncpack@12.3.0 list-mismatches --types !local,dev,peer,prod",
-    "checks:updates": "pnpm dlx npm-check-updates@16.14.17 --dep dev,optional,packageManager,peer,prod --pre 1 --root --workspaces",
+    "checks:updates": "pnpm dlx npm-check-updates@16.14.18 --dep dev,optional,packageManager,peer,prod --pre 1 --root --workspaces",
     "checks": "pnpm checks:updates && pnpm checks:mismatches",
     "lint:root": "dotenv -- eslint .",
     "lint": "dotenv -- turbo run lint lint:root tsc",
@@ -38,8 +38,8 @@
     "eslint": "8.57.0",
     "prettier": "3.2.5",
     "tsup": "8.0.2",
-    "turbo": "1.12.5",
-    "typescript": "5.4.2"
+    "turbo": "1.13.0",
+    "typescript": "^5.4.3"
   },
   "pnpm": {
     "overrides": {
