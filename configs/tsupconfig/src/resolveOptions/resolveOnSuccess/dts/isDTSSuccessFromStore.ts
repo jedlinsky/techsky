@@ -8,7 +8,7 @@ const isDTSSuccessFromStore: IsDTSSuccessFromStore = function () {
   const hasError = messages.some(({ type }) => type === 'error')
 
   if (hasError) {
-    // eslint-disable-next-line @typescript-eslint/no-throw-literal
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw 'error'
   }
 
