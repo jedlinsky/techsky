@@ -15,7 +15,8 @@ const getFiles: GetFiles = function (options) {
                 'unicorn/filename-case': [
                   'error',
                   {
-                    case: 'kebabCase'
+                    case: 'kebabCase',
+                    ignore: ['^e2']
                   }
                 ]
               }
@@ -31,7 +32,8 @@ const getFiles: GetFiles = function (options) {
                 'unicorn/filename-case': [
                   'error',
                   {
-                    case: 'kebabCase'
+                    case: 'kebabCase',
+                    ignore: ['^e2']
                   }
                 ]
               }
@@ -55,7 +57,8 @@ const getFiles: GetFiles = function (options) {
                 'unicorn/filename-case': [
                   'error',
                   {
-                    case: 'pascalCase'
+                    case: 'pascalCase',
+                    ignore: ['^e2']
                   }
                 ]
               }
