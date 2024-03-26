@@ -28,6 +28,7 @@ type PreventAbbreviationsOptions = {
   readonly allowList?: Record<string, boolean>
   readonly checkDefaultAndNamespaceImports: boolean
   readonly checkShorthandImports: boolean
+  readonly ignore?: readonly (RegExp | string)[]
   readonly replacements: Record<string, boolean>
 }
 

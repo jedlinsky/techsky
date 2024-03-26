@@ -10,6 +10,7 @@ const getPreventAbbreviations: GetPreventAbbreviations = function (options) {
       ...(allowList ? { allowList } : {}),
       checkDefaultAndNamespaceImports: false,
       checkShorthandImports: false,
+      ignore: ['^e2'],
       replacements: {
         args: false,
         dir: false,
