@@ -20,8 +20,8 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "^7.4.0",
-    "typescript": "^5.4.3"
+    "@typescript-eslint/utils": "^7.6.0",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@techsky/tsupconfig": "workspace:*"

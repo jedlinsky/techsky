@@ -37,16 +37,16 @@
     "read-pkg": "^9.0.1",
     "resolve-package-path": "^4.0.3",
     "strip-ansi": "^7.1.0",
-    "ts-essentials": "^9.4.1",
+    "ts-essentials": "^9.4.2",
     "tsc-alias": "^1.8.8",
     "tsup": "8.0.2"
   },
   "devDependencies": {
     "@techsky/tsconfig": "workspace:*",
     "@types/detective": "^5.1.5",
-    "type-fest": "4.14.0"
+    "type-fest": "^4.15.0"
   },
   "peerDependencies": {
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   }
 }

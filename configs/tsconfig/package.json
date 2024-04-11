@@ -33,6 +33,6 @@
   },
   "peerDependencies": {
     "@styled/typescript-styled-plugin": "^1.0.1",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   }
 }
