@@ -3,7 +3,7 @@ import type { ResolveExports } from './types.js'
 
 const resolveExports: ResolveExports = function ({ bundle, mainEntry, packageJson, srcDir }) {
   if (mainEntry === null) {
-    return null
+    return packageJson.exports ?? null
   }
 
   if (packageJson.exports && typeof packageJson.exports !== 'string') {

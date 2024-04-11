@@ -8,25 +8,28 @@ const resolveESM: ResolveESM = function ({
   includeCJSBundleEntry,
   isBrowser,
   isEntryEmptyCheck,
+  mainEntry,
   resolvedExports,
   srcDir
 }) {
   const exports =
     resolvedExports === null
       ? undefined
-      : Object.entries(resolvedExports).reduce<ESMExports>((accumulator, [key, value]) => {
-          const isEntryEmpty = isEntryEmptyCheck(value)
+      : mainEntry === null
+        ? resolvedExports
+        : Object.entries(resolvedExports).reduce<ESMExports>((accumulator, [key, value]) => {
+            const isEntryEmpty = isEntryEmptyCheck(value)
 
-          const resolvedValue: Exclude<ESMExports, undefined>[string] = {
-            ...(hasDTS ? { types: resolveDeclarationExtension(value) } : {}),
-            ...(isEntryEmpty ? {} : isBrowser ? { browser: value } : { import: value }),
-            ...(includeCJSBundle && key === '.'
-              ? { require: resolveIncludeCJSBundlePath({ includeCJSBundleEntry, srcDir }) }
-              : {})
-          }
+            const resolvedValue: Exclude<ESMExports, undefined>[string] = {
+              ...(hasDTS ? { types: resolveDeclarationExtension(value) } : {}),
+              ...(isEntryEmpty ? {} : isBrowser ? { browser: value } : { import: value }),
+              ...(includeCJSBundle && key === '.'
+                ? { require: resolveIncludeCJSBundlePath({ includeCJSBundleEntry, srcDir }) }
+                : {})
+            }
 
-          return { ...accumulator, [key]: resolvedValue }
-        }, {})
+            return { ...accumulator, [key]: resolvedValue }
+          }, {})
 
   return {
     type: resolvedExports === null ? undefined : 'module',

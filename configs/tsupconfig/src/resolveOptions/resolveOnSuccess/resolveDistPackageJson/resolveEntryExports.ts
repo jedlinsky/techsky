@@ -1,8 +1,12 @@
 import { resolveEntryExportsSugar } from './resolveEntryExportsSugar.js'
-import type { ResolvedEntryPoints, ResolveEntryExports } from './types.js'
+import type { ExportValue, ResolvedEntryPoints, ResolveEntryExports } from './types.js'
 
 const resolveEntryExports: ResolveEntryExports = function ({ deletedDeclarationFiles, exports }) {
-  const resolvedEntryPoints = Object.entries(exports).reduce((accumulator, [entryPoint, valuesMap]) => {
+  const resolvedEntryPoints = Object.entries<ExportValue>(exports).reduce((accumulator, [entryPoint, valuesMap]) => {
+    if (typeof valuesMap === 'string') {
+      return { ...accumulator, [entryPoint]: valuesMap }
+    }
+
     const resolvedValuesMap = Object.entries(valuesMap).reduce<Record<string, string>>((accumulator, [key, value]) => {
       if (deletedDeclarationFiles.includes(value)) {
         return accumulator

@@ -36,6 +36,8 @@ type ResolvedEntryPoints = Record<string, string> | ResolvedModuleExportsNonUnde
 
 type EntryExports = ResolvedEntryPoints | string
 
+type ExportValue = ResolvedModuleExportsNonUndefinable[string]
+
 type ResolveEntryExportsProps = {
   readonly deletedDeclarationFiles: EmptyOutputsValue
   readonly exports: ResolvedModuleExportsNonUndefinable
@@ -70,6 +72,7 @@ type WritePackageJsonProps = {
 type WritePackageJson = (props: WritePackageJsonProps) => Promise<void>
 
 export type {
+  ExportValue,
   GetDeletedDeclarationFiles,
   ResolvedEntryPoints,
   ResolveDistPackageJson,

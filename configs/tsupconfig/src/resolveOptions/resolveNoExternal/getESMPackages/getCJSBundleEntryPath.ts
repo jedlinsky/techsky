@@ -11,7 +11,9 @@ const getCJSBundleEntryPath: GetCJSBundleEntryPath = function ({ outDir, outputP
 
   const entry =
     distPackageJson.main ??
-    (distPackageJson.exports?.['.'] && 'require' in distPackageJson.exports['.']
+    (distPackageJson.exports?.['.'] &&
+    typeof distPackageJson.exports['.'] !== 'string' &&
+    'require' in distPackageJson.exports['.']
       ? distPackageJson.exports['.'].require
       : null)
 

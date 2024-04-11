@@ -39,6 +39,7 @@ type ExportsTypes = {
 }
 
 type CJSExports =
+  | ResolvedExportsNonNullable
   | {
       readonly [key: string]:
         | ExportsBrowser
@@ -68,6 +69,7 @@ type ResolveCJSProps = {
 type ResolveCJS = (props: ResolveCJSProps) => CJS
 
 type ESMExports =
+  | ResolvedExportsNonNullable
   | {
       readonly [key: string]:
         | ExportsBrowser
@@ -90,6 +92,7 @@ type ResolveESMProps = {
   readonly includeCJSBundleEntry: PreparePublishOptions['includeCJSBundleEntry']
   readonly isBrowser: PreparePublishOptions['isBrowser']
   readonly isEntryEmptyCheck: IsEntryEmptyCheck
+  readonly mainEntry: MainEntry
   readonly resolvedExports: ResolvedExports
   readonly srcDir: PreparePublishOptions['srcDir']
 }

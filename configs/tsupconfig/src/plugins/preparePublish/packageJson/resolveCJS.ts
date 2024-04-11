@@ -5,16 +5,18 @@ const resolveCJS: ResolveCJS = function ({ hasDTS, isBrowser, isEntryEmptyCheck,
   const exports =
     resolvedExports === null
       ? undefined
-      : Object.entries(resolvedExports).reduce<CJSExports>((accumulator, [key, value]) => {
-          const isEntryEmpty = isEntryEmptyCheck(value)
+      : mainEntry === null
+        ? resolvedExports
+        : Object.entries(resolvedExports).reduce<CJSExports>((accumulator, [key, value]) => {
+            const isEntryEmpty = isEntryEmptyCheck(value)
 
-          const resolvedValue: Exclude<CJSExports, undefined>[string] = {
-            ...(hasDTS ? { types: resolveDeclarationExtension(value) } : {}),
-            ...(isEntryEmpty ? {} : isBrowser ? { browser: value } : { require: value })
-          }
+            const resolvedValue: Exclude<CJSExports, undefined>[string] = {
+              ...(hasDTS ? { types: resolveDeclarationExtension(value) } : {}),
+              ...(isEntryEmpty ? {} : isBrowser ? { browser: value } : { require: value })
+            }
 
-          return { ...accumulator, [key]: resolvedValue }
-        }, {})
+            return { ...accumulator, [key]: resolvedValue }
+          }, {})
 
   const isMainEntryEmpty = isEntryEmptyCheck(mainEntry)
 

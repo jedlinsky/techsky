@@ -21,6 +21,7 @@ const resolveModule: ResolveModule = function ({
         includeCJSBundleEntry,
         isBrowser,
         isEntryEmptyCheck,
+        mainEntry,
         resolvedExports,
         srcDir
       })
