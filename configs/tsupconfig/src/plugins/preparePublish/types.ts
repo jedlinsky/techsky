@@ -9,6 +9,22 @@ type GetEmptyEmittedFilesProps = {
 
 type GetEmptyEmittedFiles = (props: GetEmptyEmittedFilesProps) => EmptyEmittedFiles
 
-type PreparePublish = (options: Options) => Plugin
+type PreparePublishOptions = Pick<
+  Options,
+  | 'augmentation'
+  | 'bundle'
+  | 'deleteEmptyEmittedFiles'
+  | 'dts'
+  | 'format'
+  | 'includeCJSBundle'
+  | 'includeCJSBundleEntry'
+  | 'isBrowser'
+  | 'mainEntry'
+  | 'outDir'
+  | 'packageJson'
+  | 'srcDir'
+>
 
-export type { EmptyEmittedFiles, GetEmptyEmittedFiles, PreparePublish }
+type PreparePublish = (options: PreparePublishOptions) => Plugin
+
+export type { EmptyEmittedFiles, GetEmptyEmittedFiles, PreparePublish, PreparePublishOptions }

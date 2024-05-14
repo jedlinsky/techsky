@@ -10,6 +10,7 @@ import { resolveBundle } from './resolveBundle.js'
 import { resolveClean } from './resolveClean.js'
 import { resolveDeleteEmptyEmittedFiles } from './resolveDeleteEmptyEmittedFiles.js'
 import { resolveESBuildOptions } from './resolveESBuildOptions.js'
+import { resolveESBuildPlugins } from './resolveESBuildPlugins.js'
 import { resolveExcludeEntry } from './resolveExcludeEntry.js'
 import { resolveExcludeEntryDTS } from './resolveExcludeEntryDTS.js'
 import { resolveExecuteOnWatch } from './resolveExecuteOnWatch.js'
@@ -161,6 +162,23 @@ const resolveOptions: ResolveOptions = async function (options = {}, defineConfi
     treeshake
   })
 
+  const esbuildPlugins = resolveESBuildPlugins({
+    augmentation,
+    bundle,
+    deleteEmptyEmittedFiles,
+    dts,
+    esbuildPlugins: options.esbuildPlugins,
+    format,
+    includeCJSBundle,
+    includeCJSBundleEntry,
+    includeDistPackageJson,
+    isBrowser,
+    mainEntry,
+    outDir,
+    packageJson,
+    srcDir
+  })
+
   return {
     augmentation,
     bundle,
@@ -171,6 +189,7 @@ const resolveOptions: ResolveOptions = async function (options = {}, defineConfi
     dtsTimeout,
     entry,
     esbuildOptions,
+    esbuildPlugins,
     excludeEntry,
     excludeEntryDTS,
     executeOnWatch,

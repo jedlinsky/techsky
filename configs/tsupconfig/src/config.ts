@@ -1,7 +1,6 @@
 import { defineConfig } from 'tsup'
 import { resolveNullEntry } from 'resolveNullEntry/index.js'
 import { deleteOutput } from './deleteOutput/index.js'
-import { preparePublish } from './plugins/index.js'
 import { resolveIncludeCJSBundleBuildOptions, resolveOptions, resolveSilentMessage } from './resolveOptions/index.js'
 import { initDTSListener } from './resolveOptions/resolveOnSuccess/dts/initDTSListener.js'
 import type { IncludeCJSBundleConfigOptions } from 'resolveOptions/types.js'
@@ -27,13 +26,12 @@ const config: Config = function (configOptions) {
       dts,
       entry,
       esbuildOptions,
+      esbuildPlugins,
       external,
       extraEntry,
       format,
-      includeCJSBundle,
       includeCJSBundleEntry,
       includeCJSBundleOptions,
-      includeDistPackageJson,
       keepNames,
       minify,
       noExternal,
@@ -73,11 +71,7 @@ const config: Config = function (configOptions) {
         dts,
         entry,
         esbuildOptions,
-        ...(includeDistPackageJson || includeCJSBundle
-          ? {
-              esbuildPlugins: [preparePublish(options)]
-            }
-          : {}),
+        ...(esbuildPlugins ? { esbuildPlugins } : {}),
         ...(external ? { external } : {}),
         format,
         minify,

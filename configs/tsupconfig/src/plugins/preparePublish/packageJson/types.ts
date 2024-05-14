@@ -1,9 +1,9 @@
-import type { EmptyEmittedFiles } from 'plugins/preparePublish/types.js'
+import type { EmptyEmittedFiles, PreparePublishOptions } from 'plugins/preparePublish/types.js'
 import type { MainEntry } from 'resolveOptions/resolveMainEntry/types.js'
 import type { Exports, PackageJson } from 'resolveOptions/resolvePackageJson/types.js'
-import type { DeleteEmptyEmittedFiles, Options } from 'resolveOptions/types.js'
+import type { DeleteEmptyEmittedFiles } from 'resolveOptions/types.js'
 
-type PreparePublishOptions = Options & {
+type Options = PreparePublishOptions & {
   readonly emptyEmittedFiles: EmptyEmittedFiles
 }
 
@@ -14,7 +14,7 @@ type IsEntryEmptyCheck = (entry: MainEntry) => IsEntryEmpty
 type GetIsEntryEmptyCheckProps = {
   readonly deleteEmptyEmittedFiles: DeleteEmptyEmittedFiles
   readonly emptyEmittedFiles: EmptyEmittedFiles
-  readonly outDir: PreparePublishOptions['outDir']
+  readonly outDir: Options['outDir']
 }
 
 type GetIsEntryEmptyCheck = (props: GetIsEntryEmptyCheckProps) => IsEntryEmptyCheck
@@ -23,8 +23,8 @@ type IncludeCJSBundlePath = string
 
 type ResolveIncludeCJSBundlePathProps = {
   // eslint-disable-next-line no-secrets/no-secrets
-  readonly includeCJSBundleEntry: PreparePublishOptions['includeCJSBundleEntry']
-  readonly srcDir: PreparePublishOptions['srcDir']
+  readonly includeCJSBundleEntry: Options['includeCJSBundleEntry']
+  readonly srcDir: Options['srcDir']
 }
 
 type ResolveIncludeCJSBundlePath = (props: ResolveIncludeCJSBundlePathProps) => IncludeCJSBundlePath
@@ -60,7 +60,7 @@ type CJS = {
 
 type ResolveCJSProps = {
   readonly hasDTS: boolean
-  readonly isBrowser: PreparePublishOptions['isBrowser']
+  readonly isBrowser: Options['isBrowser']
   readonly isEntryEmptyCheck: IsEntryEmptyCheck
   readonly mainEntry: MainEntry
   readonly resolvedExports: ResolvedExports
@@ -88,13 +88,13 @@ type ESM = {
 
 type ResolveESMProps = {
   readonly hasDTS: boolean
-  readonly includeCJSBundle: PreparePublishOptions['includeCJSBundle']
-  readonly includeCJSBundleEntry: PreparePublishOptions['includeCJSBundleEntry']
-  readonly isBrowser: PreparePublishOptions['isBrowser']
+  readonly includeCJSBundle: Options['includeCJSBundle']
+  readonly includeCJSBundleEntry: Options['includeCJSBundleEntry']
+  readonly isBrowser: Options['isBrowser']
   readonly isEntryEmptyCheck: IsEntryEmptyCheck
   readonly mainEntry: MainEntry
   readonly resolvedExports: ResolvedExports
-  readonly srcDir: PreparePublishOptions['srcDir']
+  readonly srcDir: Options['srcDir']
 }
 
 type ResolveESM = (props: ResolveESMProps) => ESM
@@ -104,10 +104,10 @@ type ResolvedExportsNonNullable = Exclude<Exports, string>
 type ResolvedExports = ResolvedExportsNonNullable | null
 
 type ResolveExportsProps = {
-  readonly bundle: PreparePublishOptions['bundle']
+  readonly bundle: Options['bundle']
   readonly mainEntry: MainEntry
-  readonly packageJson: PreparePublishOptions['packageJson']
-  readonly srcDir: PreparePublishOptions['srcDir']
+  readonly packageJson: Options['packageJson']
+  readonly srcDir: Options['srcDir']
 }
 
 type ResolveExports = (options: ResolveExportsProps) => ResolvedExports
@@ -124,23 +124,23 @@ type ResolvedModule = {
 }
 
 type ResolveModuleProps = {
-  readonly format: PreparePublishOptions['format']
+  readonly format: Options['format']
   readonly hasDTS: boolean
-  readonly includeCJSBundle: PreparePublishOptions['includeCJSBundle']
-  readonly includeCJSBundleEntry: PreparePublishOptions['includeCJSBundleEntry']
-  readonly isBrowser: PreparePublishOptions['isBrowser']
+  readonly includeCJSBundle: Options['includeCJSBundle']
+  readonly includeCJSBundleEntry: Options['includeCJSBundleEntry']
+  readonly isBrowser: Options['isBrowser']
   readonly isEntryEmptyCheck: IsEntryEmptyCheck
   readonly mainEntry: MainEntry
   readonly resolvedExports: ResolvedExports
-  readonly srcDir: PreparePublishOptions['srcDir']
+  readonly srcDir: Options['srcDir']
 }
 
 type ResolveModule = (props: ResolveModuleProps) => ResolvedModule
 
 type ResolveModuleExportsProps = {
-  readonly augmentation: PreparePublishOptions['augmentation']
+  readonly augmentation: Options['augmentation']
   readonly moduleExports: ResolvedModuleExports
-  readonly srcDir: PreparePublishOptions['srcDir']
+  readonly srcDir: Options['srcDir']
 }
 
 type AugmentationExports =
@@ -190,7 +190,7 @@ type ResolvedPackageJson = {
   readonly version?: RequiredPackageJson['version']
 }
 
-type ResolvePackageJson = (options: PreparePublishOptions) => ResolvedPackageJson
+type ResolvePackageJson = (options: Options) => ResolvedPackageJson
 
 type PublishConfig = Exclude<PackageJson['publishConfig'], undefined> | null
 
@@ -203,13 +203,13 @@ type ResolvePublishConfig = (props: ResolvePublishConfigProps) => PublishConfig
 type SideEffects = RequiredPackageJson['sideEffects'] | undefined
 
 type ResolveSideEffectsProps = {
-  readonly format: PreparePublishOptions['format']
+  readonly format: Options['format']
   readonly packageJson: PackageJson
 }
 
 type ResolveSideEffects = (props: ResolveSideEffectsProps) => SideEffects
 
-type WritePackageJson = (options: PreparePublishOptions) => Promise<void>
+type WritePackageJson = (options: Options) => Promise<void>
 
 export type {
   AugmentationExportsEntries,

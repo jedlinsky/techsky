@@ -1,6 +1,7 @@
 import type { BuildOptions as DefaultESBuildOptions } from 'esbuild'
 import type { TsConfigJsonResolved as TSConfigJsonResolved } from 'get-tsconfig'
 import type { DeepReadonly } from 'ts-essentials'
+import type { PreparePublishOptions } from 'plugins/preparePublish/types.js'
 import type { ConfigOptions, DefineConfigOptions, DTSTimeout, LogLevel, Silent, Treeshake, TSUpOptions } from 'types.js'
 import type { Plugins } from './plugins/index.js'
 import type { Copy } from './resolveCopy/types.js'
@@ -169,6 +170,15 @@ type ResolveESBuildOptionsProps = {
 
 type ResolveESBuildOptions = (props: ResolveESBuildOptionsProps) => ESBuildOptions
 
+type ESBuildPlugins = TSUpOptions['esbuildPlugins'] | null
+
+type ResolveESBuildPluginsProps = PreparePublishOptions & {
+  readonly esbuildPlugins: TSUpOptions['esbuildPlugins'] | undefined
+  readonly includeDistPackageJson: Options['includeDistPackageJson']
+}
+
+type ResolveESBuildPlugins = (props: ResolveESBuildPluginsProps) => ESBuildPlugins
+
 type ExcludeEntry = readonly string[] | null
 
 type ResolveExcludeEntryProps = {
@@ -259,6 +269,7 @@ type Options = {
   readonly dtsTimeout: DTSTimeout
   readonly entry: Entry
   readonly esbuildOptions: ESBuildOptions
+  readonly esbuildPlugins: ESBuildPlugins
   readonly excludeEntry: ExcludeEntry
   readonly excludeEntryDTS: ExcludeEntryDTS
   readonly executeOnWatch: ExecuteOnWatch
@@ -365,6 +376,7 @@ export type {
   DeleteEmptyEmittedFiles,
   Entry,
   ESBuildOptions,
+  ESBuildPlugins,
   ExcludeEntry,
   ExcludeEntryDTS,
   ExecuteOnWatch,
@@ -387,6 +399,7 @@ export type {
   ResolveCommonCJSBundleOptions,
   ResolveDeleteEmptyEmittedFiles,
   ResolveESBuildOptions,
+  ResolveESBuildPlugins,
   ResolveExcludeEntry,
   ResolveExcludeEntryDTS,
   ResolveExecuteOnWatch,

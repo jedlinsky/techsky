@@ -15,7 +15,10 @@ type NoExternalDefaults = boolean
 type Silent = boolean | 'minimal'
 
 type TSUpOptions =
-  Pick<DefineConfigOptions, 'bundle' | 'dts' | 'entry' | 'external' | 'noExternal' | 'onSuccess'> extends infer TPicked
+  Pick<
+    DefineConfigOptions,
+    'bundle' | 'dts' | 'entry' | 'esbuildPlugins' | 'external' | 'noExternal' | 'onSuccess'
+  > extends infer TPicked
     ? TPicked extends object
       ? {
           readonly [TKey in keyof TPicked]-?: TPicked[TKey]
@@ -95,6 +98,7 @@ type ConfigOptions = {
   readonly dts?: TSUpOptions['dts']
   readonly dtsTimeout?: DTSTimeout
   readonly entry?: ConfigOptionsEntry
+  readonly esbuildPlugins?: TSUpOptions['esbuildPlugins']
   readonly excludeEntry?: ConfigOptionsExcludeEntry
   readonly excludeEntryDTS?: ConfigOptionsExcludeEntryDTS
   readonly executeOnWatch?: ExecuteOnWatch
